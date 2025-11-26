@@ -8,9 +8,9 @@ on:
   push:
     branches: ["main"]
 
-env:
-  DATABRICKS_CLIENT_ID: ${{secrets.DATABRICKS_CLIENT_ID}}
-  DATABRICKS_CLIENT_SECRET: ${{secrets.DATABRICKS_CLIENT_SECRET}}
+# env:
+#   DATABRICKS_CLIENT_ID: ${{secrets.DATABRICKS_CLIENT_ID}}
+#   DATABRICKS_CLIENT_SECRET: ${{secrets.DATABRICKS_CLIENT_SECRET}}
   # PROD_DIRECTORY: "/Repos/GA/cicd_w_dabs_ga_demo"
 
 jobs:
@@ -67,7 +67,7 @@ jobs:
 
       - name: Deploy bundle
         run: databricks bundle deploy --target prod
-        # working-directory: ../../
+        working-directory: lakeflow_pipelines_sql/
         env:
           DATABRICKS_TOKEN: ${{ secrets.DBX_CICD_DABS }}
           DATABRICKS_BUNDLE_ENV: prod
