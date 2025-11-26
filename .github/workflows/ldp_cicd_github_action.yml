@@ -67,6 +67,10 @@ jobs:
 
       - name: Deploy bundle
         run: databricks bundle deploy --target prod
+        # working-directory: ../../
+        env:
+          DATABRICKS_TOKEN: ${{ secrets.DBX_CICD_DABS }}
+          DATABRICKS_BUNDLE_ENV: prod
         # env:
         #   DATABRICKS_BUNDLE_ENV: prod
 
